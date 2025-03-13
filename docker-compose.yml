@@ -1,0 +1,20 @@
+services:
+  database-api:
+    command: ["uvicorn", "--host", "0.0.0.0", "--port", "8000", "main:app", "--reload"]
+    image: database-api:${VERSION}
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - VERSION=${VERSION}
+        - http_proxy=${PROXY}
+        - HTTP_PROXY=${PROXY}
+        - https_proxy=${PROXY}
+        - HTTPS_PROXY=${PROXY}
+    environment:
+      - DB_HOST=${DB_HOST}
+      - DB_USER=${DB_USER}
+      - DB_PASS=${DB_PASS}
+      - DB_NAME=${DB_NAME}
+    ports:
+      - 8000:8000
