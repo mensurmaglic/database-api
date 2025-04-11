@@ -7,10 +7,6 @@ services:
       dockerfile: Dockerfile
       args:
         - VERSION=${VERSION}
-        - http_proxy=${PROXY}
-        - HTTP_PROXY=${PROXY}
-        - https_proxy=${PROXY}
-        - HTTPS_PROXY=${PROXY}
     environment:
       - DB_HOST=${DB_HOST}
       - DB_USER=${DB_USER}
